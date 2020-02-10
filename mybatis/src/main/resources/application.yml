@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/用哪个数据库?useUnicode=true&characterEncoding=utf-8
-    username: 用户名
-    password: 密码
+    url: jdbc:mysql://localhost:3306/boot
+    username: root
+    password: Chang0.com
 
 server:
   port: 8080
