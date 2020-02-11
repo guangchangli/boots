@@ -21,4 +21,8 @@ public class Result<T> {
     public static Result failure(int code, String errMsg, Object data) {
         return Result.builder().code(code).errMsg(errMsg).success(false).data(data).build();
     }
+
+    public static Result success(Object data) {
+        return Result.builder().code(HttpStatus.OK.value()).errMsg(null).success(true).data(data).build();
+    }
 }

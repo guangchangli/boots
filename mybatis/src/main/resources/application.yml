@@ -1,13 +1,11 @@
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/boot
-    username: root
-    password: Chang0.com
+
 
 server:
   port: 8080
 
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:com/aladdin/mybatis/dao/*.xml
   type-aliases-package: com.aladdin.mybatis.entity
+spring:
+  profiles:
+    active: uat
