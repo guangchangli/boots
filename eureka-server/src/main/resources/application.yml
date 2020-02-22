@@ -4,8 +4,8 @@ eureka:
   instance:
     hostname: localhost
   client:
-    registerWithEureka: false #是否要注册到eureka  禁止自己当做服务注册
-    fetchRegistry: false #表示是否从Eureka Server获取注册信息
+    registerWithEureka: false
+    fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 spring:

@@ -2,12 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!--    <parent>-->
-    <!--        <groupId>org.springframework.boot</groupId>-->
-    <!--        <artifactId>spring-boot-starter-parent</artifactId>-->
-    <!--        <version>2.2.2.RELEASE</version>-->
-    <!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
-    <!--    </parent>-->
     <groupId>com.aladdin</groupId>
     <artifactId>boots</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -18,7 +12,6 @@
     <modules>
         <module>api</module>
         <module>common</module>
-        <module>eureka-server</module>
         <module>mybatis</module>
     </modules>
 
@@ -28,8 +21,10 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
-        <spring.cloud.version>Finchley.SR1</spring.cloud.version>
+        <spring.boot.version>2.1.9.RELEASE</spring.boot.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <cloud.alibaba.version>2.1.0.RELEASE</cloud.alibaba.version>
+        <eureka.version>1.4.7.RELEASE</eureka.version>
         <mysql.version>8.0.11</mysql.version>
         <hutool.version>5.0.0</hutool.version>
         <guava.version>28.1-jre</guava.version>
@@ -41,15 +36,31 @@
         <okhttp.version>3.9.0</okhttp.version>
     </properties>
 
-
     <dependencyManagement>
         <dependencies>
-
+            <!--支持Spring Boot 2.1.X-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
+                <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${cloud.alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- swagger-->
             <dependency>
                 <groupId>io.springfox</groupId>
@@ -96,27 +107,19 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.spring.version}</version>
             </dependency>
-            <!-- cloud-->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring.cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <!-- eureka-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-                <version>${spring.boot.version}</version>
-            </dependency>
-            <!--okhttp-->
-            <dependency>
-                <groupId>com.squareup.okhttp3</groupId>
-                <artifactId>okhttp</artifactId>
-                <version>${okhttp.version}</version>
+                <version>${eureka.version}</version>
             </dependency>
 
+            <!--okhttp-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.squareup.okhttp3</groupId>-->
+            <!--                <artifactId>okhttp</artifactId>-->
+            <!--                <version>${okhttp.version}</version>-->
+            <!--            </dependency>-->
             <!-- tomcat -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -154,11 +157,13 @@
                     <executions>
                         <execution>
                             <goals>
+                                <goal>build-info</goal>
                                 <goal>repackage</goal>
                             </goals>
                         </execution>
                     </executions>
                 </plugin>
+
             </plugins>
         </pluginManagement>
         <resources>

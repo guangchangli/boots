@@ -39,3 +39,9 @@ gen
 /common/.mvn/
 /eureka-server/.mvn/
 /mybatis/.mvn/
+/eureka-provider/.mvn/
+/eureka-provider/.mvn/wrapper/
+/eureka-provider/mvnw.cmd
+/eureka-provider/mvnw
+/eureka-provider/target/
+/eureka-server/target/
