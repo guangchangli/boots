@@ -27,7 +27,7 @@
         <eureka.version>1.4.7.RELEASE</eureka.version>
         <mysql.version>8.0.11</mysql.version>
         <hutool.version>5.0.0</hutool.version>
-        <guava.version>28.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <user.agent.version>1.20</user.agent.version>
         <lombok.version>1.18.10</lombok.version>
         <mybatis.spring.version>2.1.1</mybatis.spring.version>
